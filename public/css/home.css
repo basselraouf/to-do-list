@@ -1,36 +1,26 @@
-body {
-    font-family: "Open Sans", sans-serif;
-    line-height: 1.6;
+/* Reset margins and padding */
+.todo-item {
+    margin-bottom: 1rem; /* Consistent spacing between tasks */
+    padding: 1rem; /* Consistent padding inside each task */
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.add-todo-input,
+/* Remove extra padding/margin */
+.todo-item .col,
+.todo-item .col-auto {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Adjust input styling */
 .edit-todo-input {
-    outline: none;
+    width: 100%; /* Make sure the input takes full width */
+    margin: 0; /* Remove any default margin */
+    padding: 0.5rem; /* Add consistent padding */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
-
-.add-todo-input:focus,
-.edit-todo-input:focus {
-    border: none !important;
-    box-shadow: none !important;
-}
-
-.view-opt-label,
-.date-label {
-    font-size: 0.8rem;
-}
-
-.edit-todo-input {
-    font-size: 1.7rem !important;
-}
-
-.todo-actions {
-    visibility: hidden !important;
-}
-
-.todo-item:hover .todo-actions {
-    visibility: visible !important;
-}
-
-.todo-item.editing .todo-actions .edit-icon {
-    display: none !important;
+* {
+    box-sizing: border-box;
 }

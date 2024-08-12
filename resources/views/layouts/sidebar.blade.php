@@ -6,11 +6,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('title', config('app.name', 'Laravel'))</title>
-
-        <!-- Bootstrap CSS -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
         <div class="wrapper">

@@ -1,71 +1,24 @@
-/*
-    DEMO STYLE
-*/
-
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #fafafa;
-}
-
-p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
-}
-
-a,
-a:hover,
-a:focus {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-.navbar {
-    padding: 15px 10px;
-    background: #fff;
-    border: none;
-    border-radius: 0;
-    margin-bottom: 40px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-}
-
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
-}
-
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
-.wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
-}
-
+/* Ensure the sidebar stays fixed */
 #sidebar {
+    position: fixed; /* Keep it fixed */
+    top: 0;
+    left: 0;
     min-width: 250px;
     max-width: 250px;
     background: #7386D5;
     color: #fff;
+    height: 100vh; /* Full viewport height */
     transition: all 0.3s;
+    z-index: 1000; /* Ensure it stays behind other content */
 }
 
+/* Keep the active state for collapsing */
 #sidebar.active {
-    margin-left: -250px;
+    left: -250px; /* Slide out when active */
 }
 
 #sidebar .sidebar-header {
@@ -130,23 +83,21 @@ ul.CTAs a {
     margin-bottom: 5px;
 }
 
-a.download {
-    background: #fff;
-    color: #7386D5;
-}
-
-a.article,
-a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
 }
 
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
 
+/* Adjust content margin to account for fixed sidebar */
 #content {
-    width: 100%;
+    margin-left: 250px; /* Width of the sidebar */
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
@@ -158,7 +109,7 @@ a.article:hover {
 
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+        margin-left: -250px; /* Hide sidebar off-screen on small screens */
     }
     #sidebar.active {
         margin-left: 0;
@@ -166,4 +117,12 @@ a.article:hover {
     #sidebarCollapse span {
         display: none;
     }
+}
+
+/* ---------------------------------------------------
+    NAVBAR STYLE (Ensure it stays above sidebar)
+----------------------------------------------------- */
+
+.navbar {
+    z-index: 2000; /* Higher than sidebar */
 }

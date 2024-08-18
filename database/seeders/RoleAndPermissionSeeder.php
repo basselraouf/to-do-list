@@ -29,6 +29,10 @@ class RoleAndPermissionSeeder extends Seeder
         $user = User::where('email', 'bassel.raouf50@gmail.com')->first(); // Assuming the user's email is correct
         if ($user) {
             $user->syncRoles('admin'); // Use syncRoles to ensure the user only has the 'admin' role
+            $user->update([
+                'role_id' => 1,
+                'role_name' => 'admin',
+            ]);
         }
     }
 }

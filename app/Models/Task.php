@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
-    protected $fillable = ['description','is_completed','user_id'];
+    protected $fillable = ['description','is_completed','user_id','deadline'];
     protected $casts = [
         'is_completed' => 'boolean',
     ];

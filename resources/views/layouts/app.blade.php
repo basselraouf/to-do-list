@@ -36,18 +36,19 @@
     @include('layouts.sidebar')
 
     <!-- Display flash message -->
-    @if (session('message'))
-        <div class="alert alert-info">
-            {{ session('message') }}
-        </div>
-    @endif
-
-    <div class="container mt-4">
+    <div class="container">
         @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
+            </div>
+        @endif
+
+        @if (session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
     </div>
-    @endif
     <!-- /#sidebar-wrapper -->
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,14 +34,24 @@ class TaskController extends Controller
         if(!Auth::user()){
             return redirect()->route('login');
         }
-        $vaildated = $request->validate([
+
+        $validated = $request->validate([
             'description' => 'required|string|max:255',
             'is_completed' => 'nullable|boolean',
+            'deadline' => 'nullable|date|after_or_equal:today',
         ]);
 
-        $vaildated['user_id'] = Auth::id();
-        Task::create($vaildated);
-        return redirect()->route('tasks.index');
+        try{
+
+            $validated['user_id'] = Auth::id();
+            Task::create($validated);
+            return redirect()->route('tasks.index');
+
+        }catch(Exception $e){
+
+            return redirect()->route('tasks.index')->with('error', 'There was an error creating the task. Please try again later.');
+
+        }
     }
 
     /**
@@ -73,11 +84,21 @@ class TaskController extends Controller
             'description' => 'required|string|max:255',
         ]);
 
-        $task->description = $request->input('description');
-        $task->is_completed = $request->has('is_completed');
-        $task->save();
+        try{
+            $task->description = $request->input('description');
+            $task->is_completed = $request->has('is_completed');
 
-        return redirect()->route('tasks.index');
+            if ($task->is_completed){
+                $task->deadline = null;
+            }
+
+            $task->save();
+
+            return redirect()->route('tasks.index');
+
+        }catch(Exception $e){
+            return redirect()->route('tasks.index')->with('error', 'There was an error updating the task. Please try again later.');
+        }
     }
 
     /**

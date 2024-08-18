@@ -30,6 +30,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Auth::user()){
+            return redirect()->route('login');
+        }
         $vaildated = $request->validate([
             'description' => 'required|string|max:255',
             'is_completed' => 'nullable|boolean',

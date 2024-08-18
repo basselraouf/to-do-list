@@ -23,7 +23,7 @@
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
 
     <!-- Font Awesome CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- jQuery UI CSS -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -42,6 +42,12 @@
         </div>
     @endif
 
+    <div class="container mt-4">
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+    </div>
+    @endif
     <!-- /#sidebar-wrapper -->
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
@@ -111,6 +117,7 @@
     <!-- Custom JS -->
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/home.js') }}"></script>
+    <script src="{{ asset('js/adminPanel.js') }}"></script>
 
     <!-- jQuery UI JS -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

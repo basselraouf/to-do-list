@@ -17,11 +17,13 @@
 
                 <ul class="list-unstyled components">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="home">Home</a>
                     </li>
+                    @role('admin')
                     <li>
-                        <a href="#">Users</a>
+                        <a href="admin-panel">Admin Panel</a>
                     </li>
+                    @endrole
                 </ul>
             </nav>
 

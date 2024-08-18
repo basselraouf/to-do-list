@@ -64,4 +64,5 @@ window.onload = function () {
             checkbox.checked = isCompleted;
         });
     }
+
 };
